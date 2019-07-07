@@ -18,7 +18,7 @@ class TestRoom < MiniTest::Test
     @guest = Guest.new("Frank", 21, 100, "Purple Rain")
     @guest2 = Guest.new("Alice", 22, 50, "Don't stop me")
 
-    @room = Room.new("Cool room", 5)
+    @room = Room.new("Cool room", 5, @collection)
     # "Purple Rain","something","something else"
 
   end
@@ -28,7 +28,7 @@ class TestRoom < MiniTest::Test
   end
 
   def test_songs_available
-    assert_equal([], @room.songs_available)
+    assert_equal(["Purple Rain", "something","something else"], @room.songs_available)
   end
 
   def test_number_of_guests
@@ -49,17 +49,17 @@ class TestRoom < MiniTest::Test
   end
 
   def test_number_of_songs
-    assert_equal(0, @room.number_of_songs)
+    assert_equal(3, @room.number_of_songs)
   end
 
   def test_can_add_single_song_to_room
     @room.add_song(@song1)
-    assert_equal(["Purple Rain"], @room.songs_available)
+    assert_equal(["Purple Rain", "something","something else","Purple Rain"], @room.songs_available)
   end
 
   def test_can_add_songs_to_room
     @room.add_songs(@collection)
-    assert_equal(["Purple Rain","something","something else"], @room.songs_available)
+    assert_equal(["Purple Rain", "something","something else","Purple Rain", "something","something else"], @room.songs_available)
   end
 
   def test_entrance_fee

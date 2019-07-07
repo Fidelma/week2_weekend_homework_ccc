@@ -14,13 +14,14 @@ class TestGuest < MiniTest::Test
     @guest = Guest.new("Frank", 21, 100, "Purple Rain")
     @guest2 = Guest.new("Alice", 22, 50, "Don't stop me")
 
-    @room = Room.new("Edgy Room", 7)
 
     @song1 = Song.new("Purple Rain","Prince")
     @song2 = Song.new("something","someone")
     @song3 = Song.new("something else","someone else")
 
     @collection = [@song1, @song2, @song3]
+
+    @room = Room.new("Edgy Room", 7, @collection)
 
   end
 
@@ -41,12 +42,12 @@ class TestGuest < MiniTest::Test
   end
 
   def test_favourite_song_on_playlist__true
-    @room.add_songs(@collection)
+    # @room.add_song(@song1)
     assert_equal("woohoo", @guest.favourite_song_on_playlist(@room))
   end
 
   def test_favourite_song_on_playlist__false
-    @room.add_songs(@collection)
+    # @room.add_song(@song1)
     assert_equal("boo", @guest2.favourite_song_on_playlist(@room))
   end
 

@@ -2,10 +2,10 @@ class Room
 
   attr_reader :name, :entrance_fee, :till
 
-  def initialize(name, entrance_fee)
+  def initialize(name, entrance_fee, songs)
     @name = name
     @entrance_fee = entrance_fee
-    @songs = []
+    @songs = songs
     @guests = []
     @till = 0
   end
