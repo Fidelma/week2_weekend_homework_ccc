@@ -18,12 +18,14 @@ class Room
   def number_of_guests
     @guests.length
   end
-#Ask about passing room in as an argument here. 
+#Ask about passing room in as an argument here.
   def add_guest(guest,room)
     if room.number_of_guests < 4
-    @guests.push(guest.name)
-    room.add_to_till
-    guest.pay_entry_fee(room)
+      @guests.push(guest.name)
+      room.add_to_till
+      guest.pay_entry_fee(room)
+    else
+      return "sorry this room is already fully booked"
     end
   end
 

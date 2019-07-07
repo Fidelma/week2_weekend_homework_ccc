@@ -73,6 +73,7 @@ class TestRoom < MiniTest::Test
     @room.add_guest(@guest, @room)
     @room.add_guest(@guest, @room)
     assert_equal(4, @room.number_of_guests)
+    assert_equal("sorry this room is already fully booked", @room.add_guest(@guest, @room))
   end
 
   def test_add_guest_take_money
