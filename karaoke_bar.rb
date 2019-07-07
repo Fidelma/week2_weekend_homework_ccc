@@ -15,13 +15,11 @@ class KaraokeBar
     rooms = @rooms.map { |room| room.name}
   end
 
-  #is there a better way to do this? 
+  #is there a better way to do this?
 
   def total_income
     income = 0
-    @rooms.each do |room|
-      income += room.till
-    end
+    @rooms.each { |room| income += room.till }
     return income
   end
 
