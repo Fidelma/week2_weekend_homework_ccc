@@ -6,15 +6,17 @@ require_relative('../song.rb')
 class TestSong < MiniTest::Test
 
   def setup()
-    @song = Song.new("All to myself", "Amber Coffman")
+    @song1 = Song.new("Purple Rain","Prince")
+    @song2 = Song.new("something","someone")
+    @song3 = Song.new("something else","someone else")
   end
 
   def test_name
-    assert_equal("All to myself", @song.name)
+    assert_equal("Purple Rain", @song1.name)
   end
 
   def test_artist
-    assert_equal("Amber Coffman", @song.artist)
+    assert_equal("someone", @song2.artist)
   end
 
 end

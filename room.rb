@@ -1,11 +1,13 @@
 class Room
 
-  attr_reader :name
+  attr_reader :name, :entrance_fee, :till
 
-  def initialize(name)
+  def initialize(name, entrance_fee)
     @name = name
+    @entrance_fee = entrance_fee
     @songs = []
     @guests = []
+    @till = 0
   end
 
   def songs_available
@@ -16,10 +18,13 @@ class Room
   def number_of_guests
     @guests.length
   end
-
-  def add_guest(guest)
+#Ask about passing room in as an argument here. 
+  def add_guest(guest,room)
+    if room.number_of_guests < 4
     @guests.push(guest.name)
-    return @guests.length
+    room.add_to_till
+    guest.pay_entry_fee(room)
+    end
   end
 
   def remove_guest(guest)
@@ -42,7 +47,9 @@ class Room
     @songs.concat(songs)
   end
 
-
+  def add_to_till
+    @till += @entrance_fee
+  end
 
 
 end
